@@ -88,7 +88,7 @@ describe 'callbacks for the new DSL' do
 
       expect {
         callback.left_close!
-      }.to raise_error(AASM::InvalidTransition, "Event 'left_close' cannot transition from 'open'. Failed callback(s): [:event_guard, :transition_guard].")
+      }.to raise_error(AASM::InvalidTransition, "Event 'left_close' cannot transition from 'open'. Failed callback(s): [:transition_guard].")
     end
 
     it "does not run transition_guard twice for multiple permitted transitions" do
