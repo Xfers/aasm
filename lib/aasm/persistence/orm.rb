@@ -118,6 +118,7 @@ module AASM
       def aasm_fire_event(state_machine_name, name, options, *args, &block)
         if aasm_supports_transactions? && options[:persist]
           event = self.class.aasm(state_machine_name).state_machine.events[name]
+          event.clear_failures!
           event.fire_callbacks(:before_transaction, self, *args)
           event.fire_global_callbacks(:before_all_transactions, self, *args)
 
