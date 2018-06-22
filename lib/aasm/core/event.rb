@@ -103,6 +103,10 @@ module AASM::Core
       @transitions
     end
 
+    def clear_failures!
+      transitions.each { |transition| transition.failures.clear }
+    end
+
     def failed_callbacks
       transitions.flat_map(&:failures)
     end

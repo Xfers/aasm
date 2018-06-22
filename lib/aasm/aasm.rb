@@ -96,6 +96,7 @@ private
 
   def aasm_fire_event(state_machine_name, event_name, options, *args, &block)
     event = self.class.aasm(state_machine_name).state_machine.events[event_name]
+    event.clear_failures!
     begin
       old_state = aasm(state_machine_name).state_object_for_name(aasm(state_machine_name).current_state)
 
